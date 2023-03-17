@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-html": "/uni_modules/zero-markdown-view/components/mp-html/mp-html"
+  }
+}

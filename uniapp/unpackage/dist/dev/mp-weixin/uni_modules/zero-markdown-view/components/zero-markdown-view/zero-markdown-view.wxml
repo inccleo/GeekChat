@@ -1,0 +1,1 @@
+<view class="mark-content"><mp-html class="zero-view" vue-id="4a04aab4-1" selectable="{{selectable}}" tag-style="{{tagStyle}}" markdown="{{true}}" content="{{html}}" bind:__l="__l"></mp-html></view>

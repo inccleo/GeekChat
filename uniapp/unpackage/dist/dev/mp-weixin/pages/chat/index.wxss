@@ -1,0 +1,346 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page {
+  background-color: #f3f3f3;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  color: #333;
+  letter-spacing: 0;
+  word-wrap: break-word;
+}
+.UPOP {
+  padding: 30rpx;
+}
+.UPOP .title {
+  align-items: center;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: 450;
+  height: 90rpx;
+  justify-content: center;
+}
+.UPOP .margin {
+  margin: auto;
+}
+.UPOP .margin .userInfo-box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.UPOP .margin .userInfo {
+  align-items: center;
+  display: flex;
+  margin-bottom: 30rpx;
+}
+.UPOP .margin .userInfo .info {
+  color: #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  font-size: 29rpx;
+  justify-content: center;
+}
+.UPOP .margin .userInfo .info .name {
+  font-size: 40rpx;
+  font-weight: 500;
+}
+.UPOP .margin .userInfo .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  margin-right: 30rpx;
+}
+.UPOP .margin .stat {
+  align-items: center;
+  color: #7966ff;
+  display: flex;
+  font-size: 27rpx;
+  margin-bottom: 30rpx;
+}
+.UPOP .margin .stat .free,
+.UPOP .margin .stat .have {
+  background-color: rgba(81, 181, 237, 0.1);
+  border-radius: 7rpx;
+  padding: 13rpx;
+}
+.UPOP .margin .stat .free {
+  margin-left: 30rpx;
+}
+.UPOP .margin .invite {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  margin-top: 15rpx;
+}
+.UPOP .margin .invite .info {
+  line-height: 50rpx;
+}
+.UPOP .margin .invite .info .inviteTitle {
+  color: #3a3a3a;
+  font-size: 30rpx;
+  font-weight: 450;
+}
+.UPOP .margin .invite .info .award {
+  color: #3a3a3a;
+  font-size: 28rpx;
+}
+.UPOP .margin .invite .info .award .span {
+  color: #7966ff;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.UPOP .margin .invite .info .hint {
+  align-items: center;
+  color: #ababab;
+  display: flex;
+  font-size: 25rpx;
+}
+.UPOP .margin .invite .info .hint .more {
+  font-size: 40rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}
+.UPOP .margin .invite .btn {
+  align-items: center;
+  background-color: rgba(81, 181, 237, 0.1);
+  border-radius: 50rpx;
+  color: #7966ff;
+  display: flex;
+  font-size: 28rpx;
+  height: 60rpx;
+  justify-content: center;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  position: relative;
+}
+.UPOP .margin .invite .btn button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.UPOP .margin .videoAd {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  margin-top: 15rpx;
+}
+.UPOP .margin .videoAd .info {
+  line-height: 50rpx;
+}
+.UPOP .margin .videoAd .info .videoAdTitle {
+  color: #3a3a3a;
+  font-size: 30rpx;
+  font-weight: 450;
+}
+.UPOP .margin .videoAd .info .award {
+  color: #3a3a3a;
+  font-size: 28rpx;
+}
+.UPOP .margin .videoAd .info .award .span {
+  color: #7966ff;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.UPOP .margin .videoAd .btn {
+  align-items: center;
+  background-color: rgba(81, 181, 237, 0.1);
+  border-radius: 50rpx;
+  color: #7966ff;
+  display: flex;
+  font-size: 28rpx;
+  height: 60rpx;
+  justify-content: center;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  position: relative;
+}
+/* 按钮样式处理 */
+button {
+  font-size: 28rpx;
+}
+/* 取消按钮默认的边框线效果 */
+button:after {
+  border: none;
+}
+/* 设置图片默认样式，取消默认尺寸 */
+image {
+  display: block;
+  height: auto;
+  width: auto;
+}
+/* 输入框默认字体大小 */
+input {
+  font-size: 28rpx;
+}
+/* 列式弹性盒子 */
+.flex_col {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+/* 行式弹性盒子 */
+.flex_row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+/* 弹性盒子弹性容器 */
+.flex_col .flex_grow {
+  width: 0;
+  flex-grow: 1;
+}
+.flex_row .flex_grow {
+  flex-grow: 1;
+}
+.box-1 {
+  width: 100%;
+  height: auto;
+  padding-bottom: 100rpx;
+  box-sizing: content-box;
+  /* 兼容iPhoneX */
+  margin-bottom: 0;
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+}
+.box-2 {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: auto;
+  z-index: 2;
+  border-top: #e5e5e5 solid 1px;
+  box-sizing: content-box;
+  background-color: #F3F3F3;
+  /* 兼容iPhoneX */
+  padding-bottom: 0;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.box-2 > view {
+  padding: 0 20rpx;
+  height: 100rpx;
+}
+.box-2 .content {
+  background-color: #fff;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+.box-2 .send {
+  background-color: #7966ff;
+  color: #fff;
+  height: 64rpx;
+  margin-left: 20rpx;
+  border-radius: 32rpx;
+  padding: 0;
+  width: 120rpx;
+  line-height: 62rpx;
+}
+.box-2 .send:active {
+  background-color: #7966ff;
+}
+.box-2 .avatar {
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.talk-list {
+  padding-bottom: 60rpx;
+  /* 消息项，基础类 */
+}
+.talk-list .item {
+  padding: 20rpx 20rpx 0 20rpx;
+  align-items: flex-start;
+  align-content: flex-start;
+  color: #333;
+  /* 收到的消息 */
+  /* 发出的消息 */
+}
+.talk-list .item .pic {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  border: #fff solid 1px;
+}
+.talk-list .item .content {
+  border-radius: 4px;
+  max-width: 500rpx;
+  word-break: break-all;
+  line-height: 52rpx;
+  position: relative;
+}
+.talk-list .item.pull .content {
+  margin-left: 32rpx;
+  background-color: #fff;
+  white-space: pre-wrap;
+}
+.talk-list .item.pull .content::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-right: 20rpx solid #fff;
+  position: absolute;
+  top: 30rpx;
+  left: -18rpx;
+}
+.talk-list .item.push {
+  /* 主轴为水平方向，起点在右端。使不修改DOM结构，也能改变元素排列顺序 */
+  flex-direction: row-reverse;
+}
+.talk-list .item.push .content {
+  margin-right: 32rpx;
+  background-color: #a0e959;
+}
+.talk-list .item.push .content::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-left: 20rpx solid #a0e959;
+  position: absolute;
+  top: 30rpx;
+  right: -18rpx;
+}
+

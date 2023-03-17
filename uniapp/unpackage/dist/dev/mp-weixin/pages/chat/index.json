@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "GeekChat",
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#6c6ceb",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-notice-bar": "/node-modules/uview-ui/components/u-notice-bar/u-notice-bar",
+    "zero-markdown-view": "/uni_modules/zero-markdown-view/components/zero-markdown-view/zero-markdown-view",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "weixin-login": "/components/wxLogin",
+    "models": "/components/model"
+  }
+}
