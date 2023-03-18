@@ -17,8 +17,8 @@ class PassportService
     public function miniApp(): Application
     {
         $config = [
-            'app_id' => getenv('APPID'),
-            'secret' => getenv('SECRET'),
+            'app_id' => getenv('WX_APPID'),
+            'secret' => getenv('WX_SECRET'),
         ];
         return Factory::miniProgram($config);
     }
