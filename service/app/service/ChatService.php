@@ -27,12 +27,25 @@ class ChatService
             'stream' => true,
             'messages' => $this->getMessageBody($user_id, $question),
         ], function ($curl_info, $data) use ($connection, &$content) {
-            $arr = json_decode(substr($data, 5), true);
-            if (isset($arr['choices'][0]['delta']['content'])) {
-                $answer = $arr['choices'][0]['delta']['content'];
-                $content .= $answer;
-                $connection->send(json_encode(['event' => 'chat', 'content' => $answer]));
+            $buffer = $data;
+            // 1、把所有的 'data: {' 替换为 '{' ，'data: [' 换成 '['
+            $buffer = str_replace('data: {', '{', $buffer);
+            $buffer = str_replace('data: [', '[', $buffer);
+            // 2、把所有的 '}\n\n{' 替换维 '}[br]{' ， '}\n\n[' 替换为 '}[br]['
+            $buffer = str_replace('}'.PHP_EOL.PHP_EOL.'{', '}[br]{', $buffer);
+            $buffer = str_replace('}'.PHP_EOL.PHP_EOL.'[', '}[br][', $buffer);
+            // 3、用 '[br]' 分割成多行数组
+            $lines = explode('[br]', $buffer);
+
+            foreach($lines as $li=>$line){
+                $arr = json_decode(trim($line), TRUE);
+                if (isset($arr['choices'][0]['delta']['content'])) {
+                    $answer = $arr['choices'][0]['delta']['content'];
+                    $content .= $answer;
+                    $connection->send(json_encode(['event' => 'chat', 'content' => $answer]));
+                }
             }
+
             return strlen($data);
         });
         if ($result) {
