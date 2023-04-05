@@ -32,12 +32,12 @@ class ChatService
             $buffer = str_replace('data: {', '{', $buffer);
             $buffer = str_replace('data: [', '[', $buffer);
             // 2、把所有的 '}\n\n{' 替换维 '}[br]{' ， '}\n\n[' 替换为 '}[br]['
-            $buffer = str_replace('}'.PHP_EOL.PHP_EOL.'{', '}[br]{', $buffer);
-            $buffer = str_replace('}'.PHP_EOL.PHP_EOL.'[', '}[br][', $buffer);
+            $buffer = str_replace('}' . PHP_EOL . PHP_EOL . '{', '}[br]{', $buffer);
+            $buffer = str_replace('}' . PHP_EOL . PHP_EOL . '[', '}[br][', $buffer);
             // 3、用 '[br]' 分割成多行数组
             $lines = explode('[br]', $buffer);
 
-            foreach($lines as $li=>$line){
+            foreach ($lines as $li => $line) {
                 $arr = json_decode(trim($line), TRUE);
                 if (isset($arr['choices'][0]['delta']['content'])) {
                     $answer = $arr['choices'][0]['delta']['content'];
@@ -91,7 +91,12 @@ class ChatService
         if ($context) {
             return json_decode($context, true);
         }
+        Redis::setEx($this->user_chat_context_prefix . $user_id, 60, json_encode([
+            ["role" => 'system', "content" => $title]
+        ]));
+
         return [["role" => "system", "content" => $title]];
+
     }
 
     /**
@@ -106,14 +111,12 @@ class ChatService
         $ttl = 60;
         $context = Redis::get($this->user_chat_context_prefix . $user_id);
         if (!$context) {
-            Redis::setEx($this->user_chat_context_prefix . $user_id, $ttl, json_encode([
-                ["role" => 'system', "content" => $content]
-            ]));
             return;
         }
         $context = json_decode($context, true);
-        if (count($context) >= 4) {
-            array_shift($context);
+        if (count($context) >= 5) {
+            unset($context[1]);
+            $context = array_values($context);
         }
         $context[] = ["role" => $role, "content" => $content];
         Redis::setEx($this->user_chat_context_prefix . $user_id, $ttl, json_encode($context));
