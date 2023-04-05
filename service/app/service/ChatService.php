@@ -20,6 +20,9 @@ class ChatService
             Log::error("对话出现敏感内容", ['user_id' => $user_id, 'question' => $question]);
             return true;
         }
+        //更新上下文
+        $this->setMessageBody($user_id, $question);
+
         $content = '';
 
         $result = $this->openai()->chat([
@@ -80,26 +83,6 @@ class ChatService
     }
 
     /**
-     * 获取消息体
-     * @param int $user_id
-     * @param string $title
-     * @return array
-     */
-    public function getMessageBody(int $user_id, string $title): array
-    {
-        $context = Redis::get($this->user_chat_context_prefix . $user_id);
-        if ($context) {
-            return json_decode($context, true);
-        }
-        Redis::setEx($this->user_chat_context_prefix . $user_id, 60, json_encode([
-            ["role" => 'system', "content" => $title]
-        ]));
-
-        return [["role" => "system", "content" => $title]];
-
-    }
-
-    /**
      * 更新消息体
      * @param int $user_id
      * @param string $role
@@ -120,5 +103,25 @@ class ChatService
         }
         $context[] = ["role" => $role, "content" => $content];
         Redis::setEx($this->user_chat_context_prefix . $user_id, $ttl, json_encode($context));
+    }
+
+    /**
+     * 获取消息体
+     * @param int $user_id
+     * @param string $title
+     * @return array
+     */
+    public function getMessageBody(int $user_id, string $title): array
+    {
+        $context = Redis::get($this->user_chat_context_prefix . $user_id);
+        if ($context) {
+            return json_decode($context, true);
+        }
+        Redis::setEx($this->user_chat_context_prefix . $user_id, 60, json_encode([
+            ["role" => 'system', "content" => $title]
+        ]));
+
+        return [["role" => "system", "content" => $title]];
+
     }
 }
